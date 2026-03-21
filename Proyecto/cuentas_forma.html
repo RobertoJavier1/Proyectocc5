@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Contabilidad - Insertar Cuenta</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Insertar Cuenta Contable</h1>
+        <form action="cuentas_insertar.php" method="post">
+            <label for="NumCuenta">Numero de Cuenta:</label>
+            <input type="text" id="NumCuenta" name="NumCuenta">
+
+            <label for="NombreCuenta">Nombre de Cuenta:</label>
+            <input type="text" id="NombreCuenta" name="NombreCuenta" maxlength="50">
+
+            <label for="Tipo">Tipo:</label>
+            <select id="Tipo" name="Tipo">
+                <option value="A">Activo</option>
+                <option value="P">Pasivo</option>
+                <option value="C">Capital</option>
+                <option value="I">Ingreso</option>
+                <option value="G">Gasto</option>
+            </select>
+
+            <input type="submit" value="Guardar">
+        </form>
+        <a class="volver" href="index.html">Volver al menu</a>
+    </div>
+</body>
+</html>

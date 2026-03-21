@@ -1,0 +1,126 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    background: #f5f5f5;
+    color: #333;
+}
+
+.contenedor {
+    max-width: 600px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 30px;
+    border: 1px solid #ddd;
+}
+
+h1 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+nav a {
+    display: block;
+    padding: 8px 0;
+    color: #0066cc;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background: #f0f0f0;
+    font-weight: bold;
+}
+
+tr:hover {
+    background: #fafafa;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 7px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+input.monto {
+    text-align: right;
+}
+
+input[type="submit"] {
+    margin-top: 16px;
+    padding: 8px 20px;
+    background: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+input[type="submit"]:hover {
+    background: #555;
+}
+
+.volver {
+    display: inline-block;
+    margin-top: 16px;
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.volver:hover {
+    text-decoration: underline;
+}
+
+.mensaje {
+    padding: 10px;
+    background: #e8f5e9;
+    border: 1px solid #c8e6c9;
+    margin-bottom: 15px;
+}
+
+.accion a {
+    margin-right: 8px;
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.accion a:hover {
+    text-decoration: underline;
+}
+
+.accion a.eliminar {
+    color: #cc0000;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Contabilidad - Libro de Diario</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Libro de Diario</h1>
+
+        <p style="margin-bottom:8px; font-weight:bold;">Ver por numero de partida:</p>
+        <form action="reporte_diario.php" method="get">
+            <label for="NumPartida">Numero de Partida:</label>
+            <input type="text" id="NumPartida" name="NumPartida">
+            <input type="submit" value="Buscar">
+        </form>
+
+        <p style="margin: 16px 0 8px; font-weight:bold;">Ver todas las partidas de una fecha:</p>
+        <form action="reporte_diario.php" method="get">
+            <label for="Fecha">Fecha:</label>
+            <input type="date" id="Fecha" name="Fecha">
+            <input type="submit" value="Buscar">
+        </form>
+
+        <br><a class="volver" href="index.html">Volver al menu</a>
+    </div>
+</body>
+</html>

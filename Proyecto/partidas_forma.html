@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Contabilidad - Insertar Partida</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Insertar Partida Contable</h1>
+        <form action="partidas_insertar.php" method="post">
+            <label for="NumPartida">Numero de Partida:</label>
+            <input type="text" id="NumPartida" name="NumPartida">
+
+            <label for="Fecha">Fecha:</label>
+            <input type="date" id="Fecha" name="Fecha">
+
+            <label for="Descripcion">Descripcion:</label>
+            <input type="text" id="Descripcion" name="Descripcion" maxlength="100">
+
+            <input type="submit" value="Guardar">
+        </form>
+        <a class="volver" href="index.html">Volver al menu</a>
+    </div>
+</body>
+</html>
