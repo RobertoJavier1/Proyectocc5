@@ -29,6 +29,7 @@ while ($partida = mysqli_fetch_assoc($result)) {
     $fecha = $partida["Fecha"];
     $desc  = $partida["Descripcion"];
 
+    echo "<p><b>EMPRESA BOB INDUSTRIES</b></p>\n";
     echo "<p><b>NUMERO DE PARTIDA:</b> $np</p>\n";
     echo "<p><b>FECHA:</b> $fecha</p>\n";
     echo "<p><b>DESCRIPCION:</b> $desc</p>\n";
@@ -37,7 +38,8 @@ while ($partida = mysqli_fetch_assoc($result)) {
     $query2 = "SELECT r.DebeHaber, r.Valor, c.NombreCuenta
                FROM RegistrosContables r
                JOIN CuentasContables c ON r.NumCuenta = c.NumCuenta
-               WHERE r.NumPartida=$np";
+               WHERE r.NumPartida=$np
+               ORDER BY r.DebeHaber ASC";
     $result2 = mysqli_query($link, $query2) or die('Error: ' . mysqli_error($link));
 
     $totalDebe = 0;

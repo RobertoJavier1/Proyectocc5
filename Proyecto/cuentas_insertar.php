@@ -25,19 +25,29 @@ $result = mysqli_query($link, $query);
 
 if ($result) {
     echo '<p class="mensaje">La cuenta fue insertada exitosamente.</p>';
+    echo '<a class="volver" href="cuentas_forma.html">Insertar otro registro</a>';
+    echo ' &nbsp;|&nbsp; ';
+    echo '<a class="volver" href="cuentas_listado.php">Ver listado</a>';
+    echo ' &nbsp;|&nbsp; ';
+    echo '<a class="volver" href="index.html">Volver al menu</a>';
 } else if (mysqli_errno($link) == 1062) {
     echo '<p style="color:red; font-weight:bold;">Error: ya existe una cuenta con el numero ' . $NumCuenta . '.</p>';
+    echo '<a class="volver" href="javascript:history.back()">Regresar</a>';
+    echo ' &nbsp;|&nbsp; ';
+    echo '<a class="volver" href="cuentas_listado.php">Ver listado</a>';
+    echo ' &nbsp;|&nbsp; ';
+    echo '<a class="volver" href="index.html">Volver al menu</a>';
 } else {
     echo '<p style="color:red; font-weight:bold;">Hubo un error: ' . mysqli_error($link) . '</p>';
+    echo '<a class="volver" href="javascript:history.back()">Regresar</a>';
+    echo ' &nbsp;|&nbsp; ';
+    echo '<a class="volver" href="cuentas_listado.php">Ver listado</a>';
+    echo ' &nbsp;|&nbsp; ';
+    echo '<a class="volver" href="index.html">Volver al menu</a>';
 }
 
 mysqli_close($link);
 ?>
-        <a class="volver" href="javascript:history.back()">Regresar</a>
-        &nbsp;|&nbsp;
-        <a class="volver" href="cuentas_listado.php">Ver listado</a>
-        &nbsp;|&nbsp;
-        <a class="volver" href="index.html">Volver al menu</a>
     </div>
 </body>
 </html>

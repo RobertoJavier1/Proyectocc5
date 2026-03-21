@@ -20,6 +20,7 @@ $query = "SELECT NombreCuenta FROM CuentasContables WHERE NumCuenta=$NumCuenta";
 $result = mysqli_query($link, $query) or die('Error: ' . mysqli_error($link));
 $cuenta = mysqli_fetch_assoc($result);
 
+echo "<p><b>EMPRESA BOB INDUSTRIES</b></p>\n";
 echo "<p><b>CUENTA:</b> {$cuenta['NombreCuenta']}</p><br>\n";
 
 // Obtener todos los registros de esa cuenta
@@ -54,7 +55,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     }
 
     echo "<tr>\n";
-    echo "<td>#$np</td><td>$fecha</td><td>$desc</td>\n";
+    echo "<td>#$np</td><td style='white-space:nowrap'>$fecha</td><td>$desc</td>\n";
     echo "<td style='text-align:right; white-space:nowrap'>$debe</td>\n";
     echo "<td style='text-align:right; white-space:nowrap'>$haber</td>\n";
     echo "</tr>\n";

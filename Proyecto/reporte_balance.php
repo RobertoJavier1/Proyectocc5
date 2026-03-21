@@ -40,6 +40,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 $totalDebe  = 0;
 $totalHaber = 0;
 
+echo "<p><b>EMPRESA BOB INDUSTRIES</b></p>\n";
 echo "<table>\n";
 echo "<tr><th>Cuenta</th><th style='text-align:right'>Debe</th><th style='text-align:right'>Haber</th></tr>\n";
 

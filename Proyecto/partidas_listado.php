@@ -34,8 +34,6 @@ while ($row = mysqli_fetch_assoc($result)) {
 echo "</table>\n";
 mysqli_close($link);
 ?>
-        <br><a class="volver" href="partidas_forma.html">Insertar nueva partida</a>
-        &nbsp;|&nbsp;
         <a class="volver" href="index.html">Volver al menu</a>
     </div>
 </body>

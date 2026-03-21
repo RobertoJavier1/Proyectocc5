@@ -8,12 +8,7 @@
 <body>
     <div class="contenedor">
         <h1>Insertar Registro Contable</h1>
-        <form action="registros_insertar.php" method="post" onsubmit="
-            if (document.getElementById('CuentaDebe').value === document.getElementById('CuentaHaber').value) {
-                alert('La cuenta del Debe y la del Haber no pueden ser la misma.');
-                return false;
-            }
-        ">
+        <form action="registros_insertar.php" method="post">
 
 <?php
 $link = mysqli_connect('localhost', 'root', '', 'CONTABILIDAD')
@@ -50,7 +45,7 @@ echo "<h3>Debe</h3>\n";
 echo "<label for='CuentaDebe'>Cuenta:</label>\n";
 echo "<select id='CuentaDebe' name='CuentaDebe'>\n";
 foreach ($cuentas as $row) {
-    echo "  <option value='{$row['NumCuenta']}'>{$row['NumCuenta']} - {$row['NombreCuenta']}</option>\n";
+    echo "<option value='{$row['NumCuenta']}'>{$row['NumCuenta']} - {$row['NombreCuenta']}</option>\n";
 }
 echo "</select>\n";
 echo "<label for='ValorDebe'>Valor:</label>\n";
@@ -63,7 +58,7 @@ echo "<h3>Haber</h3>\n";
 echo "<label for='CuentaHaber'>Cuenta:</label>\n";
 echo "<select id='CuentaHaber' name='CuentaHaber'>\n";
 foreach ($cuentas as $row) {
-    echo "  <option value='{$row['NumCuenta']}'>{$row['NumCuenta']} - {$row['NombreCuenta']}</option>\n";
+    echo "<option value='{$row['NumCuenta']}'>{$row['NumCuenta']} - {$row['NombreCuenta']}</option>\n";
 }
 echo "</select>\n";
 echo "<label for='ValorHaber'>Valor:</label>\n";

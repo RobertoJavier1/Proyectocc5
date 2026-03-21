@@ -42,8 +42,6 @@ while ($row = mysqli_fetch_assoc($result)) {
 echo "</table>\n";
 mysqli_close($link);
 ?>
-        <br><a class="volver" href="registros_forma.php">Insertar nuevo registro</a>
-        &nbsp;|&nbsp;
         <a class="volver" href="index.html">Volver al menu</a>
     </div>
 </body>

@@ -9,20 +9,24 @@
     <div class="contenedor">
         <h1>Insertar Registro Contable</h1>
 <?php
-$NumPartida  = intval($_POST["NumPartida"]);
-$CuentaDebe  = intval($_POST["CuentaDebe"]);
-$ValorDebe   = floatval($_POST["ValorDebe"]);
+$NumPartida = intval($_POST["NumPartida"]);
+$CuentaDebe = intval($_POST["CuentaDebe"]);
+$ValorDebe = floatval($_POST["ValorDebe"]);
 $CuentaHaber = intval($_POST["CuentaHaber"]);
-$ValorHaber  = floatval($_POST["ValorHaber"]);
+$ValorHaber = floatval($_POST["ValorHaber"]);
+
+$enlaces_error = '<a class="volver" href="javascript:history.back()">Regresar</a>'
+    . ' &nbsp;|&nbsp; '
+    . '<a class="volver" href="registros_listado.php">Ver listado</a>'
+    . ' &nbsp;|&nbsp; '
+    . '<a class="volver" href="index.html">Volver al menu</a>';
 
 if ($CuentaDebe === $CuentaHaber) {
     echo '<p style="color:red; font-weight:bold;">Error: la cuenta del Debe y la del Haber no pueden ser la misma.</p>';
-    echo '<a class="volver" href="javascript:history.back()">Regresar</a>';
+    echo $enlaces_error;
 } elseif ($ValorDebe != $ValorHaber) {
     echo '<p style="color:red; font-weight:bold;">Error: el valor del Debe y el Haber deben ser iguales para que la partida cuadre.</p>';
-    echo '<a class="volver" href="javascript:history.back()">Regresar</a>';
-    echo ' &nbsp;|&nbsp; ';
-    echo '<a class="volver" href="registros_listado.php">Ver listado</a>';
+    echo $enlaces_error;
 } else {
     mysqli_report(MYSQLI_REPORT_OFF);
 
@@ -38,6 +42,7 @@ if ($CuentaDebe === $CuentaHaber) {
         } else {
             echo '<p style="color:red; font-weight:bold;">Hubo un error: ' . mysqli_error($link) . '</p>';
         }
+        echo $enlaces_error;
         mysqli_close($link);
     } else {
         $query = "INSERT INTO RegistrosContables VALUES ($NumPartida, $CuentaHaber, 'H', $ValorHaber)";
@@ -49,17 +54,20 @@ if ($CuentaDebe === $CuentaHaber) {
             } else {
                 echo '<p style="color:red; font-weight:bold;">Hubo un error: ' . mysqli_error($link) . '</p>';
             }
+            echo $enlaces_error;
         } else {
             echo '<p class="mensaje">El registro fue insertado exitosamente.</p>';
+            echo '<a class="volver" href="registros_forma.php">Insertar otro registro</a>';
+            echo ' &nbsp;|&nbsp; ';
+            echo '<a class="volver" href="registros_listado.php">Ver listado</a>';
+            echo ' &nbsp;|&nbsp; ';
+            echo '<a class="volver" href="index.html">Volver al menu</a>';
         }
 
         mysqli_close($link);
     }
 }
 ?>
-        <a class="volver" href="registros_listado.php">Ver listado</a>
-        &nbsp;|&nbsp;
-        <a class="volver" href="index.html">Volver al menu</a>
     </div>
 </body>
 </html>

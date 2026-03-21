@@ -24,19 +24,29 @@ $result = mysqli_query($link, $query);
 
 if ($result) {
     echo '<p class="mensaje">La partida fue insertada exitosamente.</p>';
+    echo '<a class="volver" href="partidas_forma.html">Insertar otro registro</a>';
+    echo ' &nbsp;|&nbsp; ';
+    echo '<a class="volver" href="partidas_listado.php">Ver listado</a>';
+    echo ' &nbsp;|&nbsp; ';
+    echo '<a class="volver" href="index.html">Volver al menu</a>';
 } else if (mysqli_errno($link) == 1062) {
     echo '<p style="color:red; font-weight:bold;">Error: ya existe una partida con el numero ' . $NumPartida . '.</p>';
+    echo '<a class="volver" href="javascript:history.back()">Regresar</a>';
+    echo ' &nbsp;|&nbsp; ';
+    echo '<a class="volver" href="partidas_listado.php">Ver listado</a>';
+    echo ' &nbsp;|&nbsp; ';
+    echo '<a class="volver" href="index.html">Volver al menu</a>';
 } else {
     echo '<p style="color:red; font-weight:bold;">Hubo un error: ' . mysqli_error($link) . '</p>';
+    echo '<a class="volver" href="javascript:history.back()">Regresar</a>';
+    echo ' &nbsp;|&nbsp; ';
+    echo '<a class="volver" href="partidas_listado.php">Ver listado</a>';
+    echo ' &nbsp;|&nbsp; ';
+    echo '<a class="volver" href="index.html">Volver al menu</a>';
 }
 
 mysqli_close($link);
 ?>
-        <a class="volver" href="javascript:history.back()">Regresar</a>
-        &nbsp;|&nbsp;
-        <a class="volver" href="partidas_listado.php">Ver listado</a>
-        &nbsp;|&nbsp;
-        <a class="volver" href="index.html">Volver al menu</a>
     </div>
 </body>
 </html>
