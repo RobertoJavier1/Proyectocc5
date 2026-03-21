@@ -10,15 +10,14 @@
         <h1>Eliminar Registro Contable</h1>
 <?php
 $NumPartida = intval($_GET["NumPartida"]);
-$NumCuenta  = intval($_GET["NumCuenta"]);
 
 $link = mysqli_connect('localhost', 'root', '', 'CONTABILIDAD')
     or die('No se pudo conectar: ' . mysqli_connect_error());
 
-$query = "DELETE FROM RegistrosContables WHERE NumPartida=$NumPartida AND NumCuenta=$NumCuenta";
+$query = "DELETE FROM RegistrosContables WHERE NumPartida=$NumPartida";
 
 $result = mysqli_query($link, $query) or die('Hubo un error: ' . mysqli_error($link));
-echo '<p class="mensaje">El registro fue eliminado exitosamente.</p>';
+echo '<p class="mensaje">El registro fue eliminado exitosamente (Debe y Haber).</p>';
 
 mysqli_close($link);
 ?>
