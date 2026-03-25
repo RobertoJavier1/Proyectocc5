@@ -14,6 +14,22 @@ $NumCuenta = intval($_POST["NumCuenta"]);
 $NombreCuenta = $_POST["NombreCuenta"];
 $Tipo = $_POST["Tipo"];
 
+if ($NumCuenta <= 0) {
+    echo '<p style="color:red; font-weight:bold;">Error: el numero de cuenta debe ser un entero positivo.</p>';
+    echo '<a class="volver" href="javascript:history.back()">Regresar</a>';
+    echo ' &nbsp;|&nbsp; ';
+    echo '<a class="volver" href="index.html">Volver al menu</a>';
+    exit;
+}
+
+if (trim($NombreCuenta) === '') {
+    echo '<p style="color:red; font-weight:bold;">Error: el nombre de cuenta no puede estar vacio.</p>';
+    echo '<a class="volver" href="javascript:history.back()">Regresar</a>';
+    echo ' &nbsp;|&nbsp; ';
+    echo '<a class="volver" href="index.html">Volver al menu</a>';
+    exit;
+}
+
 mysqli_report(MYSQLI_REPORT_OFF);
 
 $link = mysqli_connect('localhost', 'root', '', 'CONTABILIDAD')

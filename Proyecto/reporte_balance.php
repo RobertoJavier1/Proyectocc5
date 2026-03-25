@@ -51,13 +51,13 @@ foreach ($tipos as $tipo => $nombreTipo) {
 
     foreach ($datos[$tipo] as $row) {
         $nombre = $row["NombreCuenta"];
-        $debe   = $row["Debe"];
-        $haber  = $row["Haber"];
+        $debe = $row["Debe"];
+        $haber = $row["Haber"];
 
-        $totalDebe  += $debe;
+        $totalDebe += $debe;
         $totalHaber += $haber;
 
-        $debeStr  = $debe  > 0 ? 'Q. ' . number_format($debe,  2, '.', ',') : '';
+        $debeStr = $debe  > 0 ? 'Q. ' . number_format($debe,  2, '.', ',') : '';
         $haberStr = $haber > 0 ? 'Q. ' . number_format($haber, 2, '.', ',') : '';
 
         echo "<tr>\n";

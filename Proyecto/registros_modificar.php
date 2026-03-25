@@ -9,11 +9,11 @@
     <div class="contenedor">
         <h1>Modificar Registro Contable</h1>
 <?php
-$NumPartida  = intval($_POST["NumPartida"]);
-$CuentaDebe  = intval($_POST["CuentaDebe"]);
-$ValorDebe   = floatval($_POST["ValorDebe"]);
+$NumPartida = intval($_POST["NumPartida"]);
+$CuentaDebe = intval($_POST["CuentaDebe"]);
+$ValorDebe = floatval($_POST["ValorDebe"]);
 $CuentaHaber = intval($_POST["CuentaHaber"]);
-$ValorHaber  = floatval($_POST["ValorHaber"]);
+$ValorHaber = floatval($_POST["ValorHaber"]);
 
 if ($ValorDebe != $ValorHaber) {
     echo '<p style="color:red; font-weight:bold;">Error: el valor del Debe y el Haber deben ser iguales para que la partida cuadre.</p>';

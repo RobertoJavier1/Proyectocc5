@@ -13,6 +13,30 @@ $NumPartida = intval($_POST["NumPartida"]);
 $Fecha = $_POST["Fecha"];
 $Descripcion = $_POST["Descripcion"];
 
+if ($NumPartida <= 0) {
+    echo '<p style="color:red; font-weight:bold;">Error: el numero de partida debe ser un entero positivo.</p>';
+    echo '<a class="volver" href="javascript:history.back()">Regresar</a>';
+    echo ' &nbsp;|&nbsp; ';
+    echo '<a class="volver" href="index.html">Volver al menu</a>';
+    exit;
+}
+
+if (trim($Fecha) === '') {
+    echo '<p style="color:red; font-weight:bold;">Error: la fecha no puede estar vacia.</p>';
+    echo '<a class="volver" href="javascript:history.back()">Regresar</a>';
+    echo ' &nbsp;|&nbsp; ';
+    echo '<a class="volver" href="index.html">Volver al menu</a>';
+    exit;
+}
+
+if (trim($Descripcion) === '') {
+    echo '<p style="color:red; font-weight:bold;">Error: la descripcion no puede estar vacia.</p>';
+    echo '<a class="volver" href="javascript:history.back()">Regresar</a>';
+    echo ' &nbsp;|&nbsp; ';
+    echo '<a class="volver" href="index.html">Volver al menu</a>';
+    exit;
+}
+
 mysqli_report(MYSQLI_REPORT_OFF);
 
 $link = mysqli_connect('localhost', 'root', '', 'CONTABILIDAD')

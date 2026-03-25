@@ -15,9 +15,11 @@ $NumCuenta = intval($_GET["NumCuenta"]);
 $link = mysqli_connect('localhost', 'root', '', 'CONTABILIDAD')
     or die('No se pudo conectar: ' . mysqli_connect_error());
 
-$query = "DELETE FROM CuentasContables WHERE NumCuenta=$NumCuenta";
+$query = "DELETE FROM RegistrosContables WHERE NumCuenta=$NumCuenta";
+mysqli_query($link, $query) or die('Hubo un error: ' . mysqli_error($link));
 
-$result = mysqli_query($link, $query) or die('Hubo un error: ' . mysqli_error($link));
+$query = "DELETE FROM CuentasContables WHERE NumCuenta=$NumCuenta";
+mysqli_query($link, $query) or die('Hubo un error: ' . mysqli_error($link));
 echo '<p class="mensaje">La cuenta fue eliminada exitosamente.</p>';
 
 mysqli_close($link);
