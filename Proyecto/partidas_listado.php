@@ -26,7 +26,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo "  <tr>\n";
     echo "    <td>$num</td><td>$fecha</td><td>$desc</td>\n";
     echo "    <td class='accion'>";
-    echo "<a href='partidas_modificar_forma.php?NumPartida=$num&Fecha=" . urlencode($fecha) . "&Descripcion=" . urlencode($desc) . "'>Editar</a>";
+    echo "<a href='partidas_modificar_forma.php?NumPartida=$num'>Editar</a>";
     echo "<a class='eliminar' href='partidas_eliminar.php?NumPartida=$num'>Eliminar</a>";
     echo "</td>\n  </tr>\n";
 }
