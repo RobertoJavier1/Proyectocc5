@@ -19,7 +19,7 @@ $ValorHaber  = floatval($_POST["ValorHaber"]);
 
 $enlaces_error = '<a class="volver" href="javascript:history.back()">Regresar</a>'
     . ' &nbsp;|&nbsp; '
-    . '<a class="volver" href="partidas_listado.php">Ver listado</a>'
+    . '<a class="volver" href="partidas_vista.php">Ver listado</a>'
     . ' &nbsp;|&nbsp; '
     . '<a class="volver" href="index.html">Volver al menu</a>';
 
@@ -91,7 +91,7 @@ if (!$result) {
 mysqli_close($link);
 
 echo '<p class="mensaje">La partida fue modificada exitosamente.</p>';
-echo '<a class="volver" href="partidas_listado.php">Volver al listado</a>';
+echo '<a class="volver" href="partidas_vista.php">Volver al listado</a>';
 echo ' &nbsp;|&nbsp; ';
 echo '<a class="volver" href="index.html">Volver al menu</a>';
 ?>

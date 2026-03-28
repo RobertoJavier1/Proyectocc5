@@ -17,7 +17,7 @@ $ValorHaber = floatval($_POST["ValorHaber"]);
 
 $enlaces_error = '<a class="volver" href="javascript:history.back()">Regresar</a>'
     . ' &nbsp;|&nbsp; '
-    . '<a class="volver" href="registros_listado.php">Ver listado</a>'
+    . '<a class="volver" href="registros_vista.php">Ver listado</a>'
     . ' &nbsp;|&nbsp; '
     . '<a class="volver" href="index.html">Volver al menu</a>';
 
@@ -57,9 +57,9 @@ if ($CuentaDebe === $CuentaHaber) {
             echo $enlaces_error;
         } else {
             echo '<p class="mensaje">El registro fue insertado exitosamente.</p>';
-            echo '<a class="volver" href="registros_forma.php">Insertar otro registro</a>';
+            echo '<a class="volver" href="registros_nuevo.php">Insertar otro registro</a>';
             echo ' &nbsp;|&nbsp; ';
-            echo '<a class="volver" href="registros_listado.php">Ver listado</a>';
+            echo '<a class="volver" href="registros_vista.php">Ver listado</a>';
             echo ' &nbsp;|&nbsp; ';
             echo '<a class="volver" href="index.html">Volver al menu</a>';
         }

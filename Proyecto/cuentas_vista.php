@@ -37,7 +37,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo "<td>$num</td><td>$nombre</td><td>$tipotxt</td>\n";
     echo "<td class='accion'>";
     // urlencode convierte el nombre a formato URL espacios y simbolos para que el link no se rompa
-    echo "<a href='cuentas_modificar_forma.php?NumCuenta=$num&NombreCuenta=" . urlencode($nombre) . "&Tipo=$tipo'>Editar</a>";
+    echo "<a href='cuentas_actualizar_nuevo.php?NumCuenta=$num&NombreCuenta=" . urlencode($nombre) . "&Tipo=$tipo'>Editar</a>";
     echo "<a class='eliminar' href='cuentas_eliminar.php?NumCuenta=$num'>Eliminar</a>";
     echo "</td>\n  </tr>\n";
 }

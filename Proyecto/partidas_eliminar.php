@@ -21,7 +21,7 @@ echo '<p class="mensaje">La partida fue eliminada exitosamente.</p>';
 
 mysqli_close($link);
 ?>
-        <a class="volver" href="partidas_listado.php">Volver al listado</a>
+        <a class="volver" href="partidas_vista.php">Volver al listado</a>
         &nbsp;|&nbsp;
         <a class="volver" href="index.html">Volver al menu</a>
     </div>

@@ -31,7 +31,7 @@ mysqli_close($link);
 ?>
         <p><b>Numero de Partida:</b> <?php echo $NumPartida; ?></p>
 
-        <form action="registros_modificar.php" method="post">
+        <form action="registros_actualizar.php" method="post">
             <input type="hidden" name="NumPartida"  value="<?php echo $NumPartida; ?>">
             <input type="hidden" name="CuentaDebe"  value="<?php echo $debe["NumCuenta"]; ?>">
             <input type="hidden" name="CuentaHaber" value="<?php echo $haber["NumCuenta"]; ?>">
@@ -53,7 +53,7 @@ mysqli_close($link);
 
             <input type="submit" value="Guardar cambios">
         </form>
-        <a class="volver" href="registros_listado.php">Volver al listado</a>
+        <a class="volver" href="registros_vista.php">Volver al listado</a>
     </div>
 </body>
 </html>

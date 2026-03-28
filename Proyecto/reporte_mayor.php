@@ -81,7 +81,7 @@ echo "</table>\n";
 mysqli_close($link);
 ?>
 
-        <br><a class="volver" href="reporte_mayor_forma.php">Volver</a>
+        <br><a class="volver" href="reporte_mayor_nuevo.php">Volver</a>
         &nbsp;|&nbsp;
         <a class="volver" href="index.html">Volver al menu</a>
     </div>

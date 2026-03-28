@@ -20,7 +20,7 @@ $partida = mysqli_fetch_assoc($res);
 
 if (!$partida) {
     echo '<p style="color:red; font-weight:bold;">Error: partida no encontrada.</p>';
-    echo '<a class="volver" href="partidas_listado.php">Volver al listado</a>';
+    echo '<a class="volver" href="partidas_vista.php">Volver al listado</a>';
     mysqli_close($link);
     exit;
 }
@@ -43,7 +43,7 @@ $cuentas = mysqli_fetch_all($res, MYSQLI_ASSOC);
 
 mysqli_close($link);
 ?>
-        <form action="partidas_modificar.php" method="post">
+        <form action="partidas_actualizar.php" method="post">
             <input type="hidden" name="NumPartida" value="<?php echo $NumPartida; ?>">
 
             <label>Numero de Partida:</label>
@@ -89,7 +89,7 @@ echo "</div>\n";
 
             <input type="submit" value="Guardar cambios">
         </form>
-        <a class="volver" href="partidas_listado.php">Volver al listado</a>
+        <a class="volver" href="partidas_vista.php">Volver al listado</a>
     </div>
 </body>
 </html>

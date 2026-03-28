@@ -22,7 +22,7 @@ $tipos = [
 ];
 
 ?>
-        <form action="cuentas_modificar.php" method="post">
+        <form action="cuentas_actualizar.php" method="post">
             <label>Numero de Cuenta:</label>
             <p><?php echo $NumCuenta; ?></p>
             <input type="hidden" name="NumCuenta" value="<?php echo $NumCuenta; ?>">
@@ -44,7 +44,7 @@ $tipos = [
 
             <input type="submit" value="Guardar cambios">
         </form>
-        <a class="volver" href="cuentas_listado.php">Volver al listado</a>
+        <a class="volver" href="cuentas_vista.php">Volver al listado</a>
     </div>
 </body>
 </html>

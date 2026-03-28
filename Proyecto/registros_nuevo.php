@@ -27,7 +27,7 @@ if ($partidas) {
     }
     echo "</select>\n";
 } else {
-    echo "<p style='color:red'>No hay partidas registradas. <a href='partidas_forma.html'>Crear una partida</a> primero.</p>\n";
+    echo "<p style='color:red'>No hay partidas registradas. <a href='partidas_nuevo.html'>Crear una partida</a> primero.</p>\n";
 }
 
 // Opciones de cuentas para reusar en ambos combos

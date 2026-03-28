@@ -82,7 +82,7 @@ while ($partida = mysqli_fetch_assoc($result)) {
 mysqli_close($link);
 ?>
 
-        <a class="volver" href="reporte_diario_forma.html">Volver</a>
+        <a class="volver" href="reporte_diario_nuevo.html">Volver</a>
         &nbsp;|&nbsp;
         <a class="volver" href="index.html">Volver al menu</a>
     </div>

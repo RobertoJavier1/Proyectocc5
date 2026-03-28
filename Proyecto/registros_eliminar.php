@@ -21,7 +21,7 @@ echo '<p class="mensaje">El registro fue eliminado exitosamente (Debe y Haber).<
 
 mysqli_close($link);
 ?>
-        <a class="volver" href="registros_listado.php">Volver al listado</a>
+        <a class="volver" href="registros_vista.php">Volver al listado</a>
         &nbsp;|&nbsp;
         <a class="volver" href="index.html">Volver al menu</a>
     </div>

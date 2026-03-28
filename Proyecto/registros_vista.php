@@ -34,7 +34,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo "<tr>\n";
     echo "<td>$np</td><td>$nc</td><td>$nom</td><td>$dh</td><td style='text-align:right; white-space:nowrap'>$val</td>\n";
     echo "<td class='accion'>";
-    echo "<a href='registros_modificar_forma.php?NumPartida=$np'>Editar</a>";
+    echo "<a href='registros_actualizar_nuevo.php?NumPartida=$np'>Editar</a>";
     echo "<a class='eliminar' href='registros_eliminar.php?NumPartida=$np&NumCuenta=$nc'>Eliminar</a>";
     echo "</td>\n  </tr>\n";
 }

@@ -15,16 +15,26 @@ $NumCuenta = intval($_GET["NumCuenta"]);
 $link = mysqli_connect('localhost', 'root', '', 'CONTABILIDAD')
     or die('No se pudo conectar: ' . mysqli_connect_error());
 
-$query = "DELETE FROM RegistrosContables WHERE NumCuenta=$NumCuenta";
-mysqli_query($link, $query) or die('Hubo un error: ' . mysqli_error($link));
+$stmt = mysqli_prepare($link, "SELECT COUNT(*) FROM RegistrosContables WHERE NumCuenta = ?");
+mysqli_stmt_bind_param($stmt, "i", $NumCuenta);
+mysqli_stmt_execute($stmt);
+mysqli_stmt_bind_result($stmt, $total);
+mysqli_stmt_fetch($stmt);
+mysqli_stmt_close($stmt);
 
-$query = "DELETE FROM CuentasContables WHERE NumCuenta=$NumCuenta";
-mysqli_query($link, $query) or die('Hubo un error: ' . mysqli_error($link));
-echo '<p class="mensaje">La cuenta fue eliminada exitosamente.</p>';
+if ($total > 0) {
+    echo '<p style="color:red; font-weight:bold;">Error: no se puede eliminar la cuenta porque tiene registros contables asociados.</p>';
+} else {
+    $stmt = mysqli_prepare($link, "DELETE FROM CuentasContables WHERE NumCuenta = ?");
+    mysqli_stmt_bind_param($stmt, "i", $NumCuenta);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    echo '<p class="mensaje">La cuenta fue eliminada exitosamente.</p>';
+}
 
 mysqli_close($link);
 ?>
-        <a class="volver" href="cuentas_listado.php">Volver al listado</a>
+        <a class="volver" href="cuentas_vista.php">Volver al listado</a>
         &nbsp;|&nbsp;
         <a class="volver" href="index.html">Volver al menu</a>
     </div>
