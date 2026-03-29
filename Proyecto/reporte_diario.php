@@ -13,7 +13,7 @@
 $link = mysqli_connect('localhost', 'root', '', 'CONTABILIDAD')
     or die('No se pudo conectar: ' . mysqli_connect_error());
 
-// Determinar si busca por partida o por fecha
+//determinar si busca por partida o por fecha
 if (isset($_GET["NumPartida"]) && $_GET["NumPartida"] != '') {
     $NumPartida = intval($_GET["NumPartida"]);
     $query = "SELECT * FROM PartidasContables WHERE NumPartida=$NumPartida";
@@ -25,16 +25,16 @@ if (isset($_GET["NumPartida"]) && $_GET["NumPartida"] != '') {
 $result = mysqli_query($link, $query) or die('Error: ' . mysqli_error($link));
 
 while ($partida = mysqli_fetch_assoc($result)) {
-    $np   = $partida["NumPartida"];
+    $np = $partida["NumPartida"];
     $fecha = $partida["Fecha"];
-    $desc  = $partida["Descripcion"];
+    $desc = $partida["Descripcion"];
 
     echo "<p><b>EMPRESA BOB INDUSTRIES</b></p>\n";
     echo "<p><b>NUMERO DE PARTIDA:</b> $np</p>\n";
     echo "<p><b>FECHA:</b> $fecha</p>\n";
     echo "<p><b>DESCRIPCION:</b> $desc</p>\n";
 
-    // Registros de esta partida
+    //registros de esta partida
     $query2 = "SELECT r.DebeHaber, r.Valor, c.NombreCuenta
                FROM RegistrosContables r
                JOIN CuentasContables c ON r.NumCuenta = c.NumCuenta
@@ -50,8 +50,8 @@ while ($partida = mysqli_fetch_assoc($result)) {
 
     while ($row = mysqli_fetch_assoc($result2)) {
         $nombre = $row["NombreCuenta"];
-        $valor  = $row["Valor"];
-        $dh     = $row["DebeHaber"];
+        $valor = $row["Valor"];
+        $dh = $row["DebeHaber"];
 
         if ($dh == 'D') {
             $totalDebe += $valor;

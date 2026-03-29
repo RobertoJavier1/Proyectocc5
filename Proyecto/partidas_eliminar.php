@@ -14,10 +14,13 @@ $NumPartida = intval($_GET["NumPartida"]);
 $link = mysqli_connect('localhost', 'root', '', 'CONTABILIDAD')
     or die('No se pudo conectar: ' . mysqli_connect_error());
 
-$query = "DELETE FROM PartidasContables WHERE NumPartida=$NumPartida";
+mysqli_query($link, "DELETE FROM RegistrosContables WHERE NumPartida=$NumPartida")
+    or die('Hubo un error al eliminar los registros: ' . mysqli_error($link));
 
-$result = mysqli_query($link, $query) or die('Hubo un error: ' . mysqli_error($link));
-echo '<p class="mensaje">La partida fue eliminada exitosamente.</p>';
+mysqli_query($link, "DELETE FROM PartidasContables WHERE NumPartida=$NumPartida")
+    or die('Hubo un error al eliminar la partida: ' . mysqli_error($link));
+
+echo '<p class="mensaje">La partida y sus registros fueron eliminados exitosamente.</p>';
 
 mysqli_close($link);
 ?>

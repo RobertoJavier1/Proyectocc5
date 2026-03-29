@@ -15,7 +15,7 @@ $NumCuenta = intval($_GET["NumCuenta"]);
 $link = mysqli_connect('localhost', 'root', '', 'CONTABILIDAD')
     or die('No se pudo conectar: ' . mysqli_connect_error());
 
-// Obtener nombre de la cuenta
+//obtener nombre de la cuenta
 $query = "SELECT NombreCuenta FROM CuentasContables WHERE NumCuenta=$NumCuenta";
 $result = mysqli_query($link, $query) or die('Error: ' . mysqli_error($link));
 $cuenta = mysqli_fetch_assoc($result);
@@ -23,7 +23,7 @@ $cuenta = mysqli_fetch_assoc($result);
 echo "<p><b>EMPRESA BOB INDUSTRIES</b></p>\n";
 echo "<p><b>CUENTA:</b> {$cuenta['NombreCuenta']}</p><br>\n";
 
-// Obtener todos los registros de esa cuenta
+//obtener todos los registros de esa cuenta
 $query = "SELECT r.NumPartida, p.Fecha, p.Descripcion, r.DebeHaber, r.Valor
           FROM RegistrosContables r
           JOIN PartidasContables p ON r.NumPartida = p.NumPartida

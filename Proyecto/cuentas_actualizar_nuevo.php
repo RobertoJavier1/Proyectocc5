@@ -9,7 +9,7 @@
     <div class="contenedor">
         <h1>Modificar Cuenta Contable</h1>
 <?php
-//intval para convertir a int
+
 $NumCuenta = intval($_GET["NumCuenta"]);
 $NombreCuenta = $_GET["NombreCuenta"];
 $Tipo = $_GET["Tipo"];
@@ -33,8 +33,8 @@ $tipos = [
 
             <label for="Tipo">Tipo:</label>
             <select id="Tipo" name="Tipo">
-             <!-- Recorre el arreglo de tipos para generar cada opcion del select
-             $val = codigo (A, P, C, I, G), $label = nombre (Activo, Pasivo....) -->
+             <!-- recorre el arreglo de tipos para generar cada opcion del select
+             $val = codigo (A,P,C,I,G), $label = nombre (Activo,Pasivo,etc) -->
                 <?php foreach ($tipos as $val => $label): ?>
                 <option value="<?php echo $val; ?>" <?php echo ($Tipo == $val) ? 'selected' : ''; ?>>
                     <?php echo $label; ?>

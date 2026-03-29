@@ -14,7 +14,7 @@ $NumPartida = intval($_GET["NumPartida"]);
 $link = mysqli_connect('localhost', 'root', '', 'CONTABILIDAD')
     or die('No se pudo conectar: ' . mysqli_connect_error());
 
-// Cargar datos de la partida
+//cargar datos de la partida
 $res = mysqli_query($link, "SELECT Fecha, Descripcion FROM PartidasContables WHERE NumPartida = $NumPartida");
 $partida = mysqli_fetch_assoc($res);
 
@@ -25,7 +25,7 @@ if (!$partida) {
     exit;
 }
 
-// Cargar registros Debe y Haber de esta partida
+//cargar registros Debe y Haber de esta partida
 $res = mysqli_query($link, "SELECT NumCuenta, DebeHaber, Valor FROM RegistrosContables WHERE NumPartida = $NumPartida");
 $registros = [];
 while ($row = mysqli_fetch_assoc($res)) {
@@ -37,7 +37,7 @@ $valorDebe   = isset($registros['D']) ? $registros['D']['Valor']     : '';
 $cuentaHaber = isset($registros['H']) ? $registros['H']['NumCuenta'] : 0;
 $valorHaber  = isset($registros['H']) ? $registros['H']['Valor']     : '';
 
-// Cargar todas las cuentas para los combos
+//cargar todas las cuentas para los combos
 $res = mysqli_query($link, "SELECT NumCuenta, NombreCuenta FROM CuentasContables ORDER BY NumCuenta");
 $cuentas = mysqli_fetch_all($res, MYSQLI_ASSOC);
 

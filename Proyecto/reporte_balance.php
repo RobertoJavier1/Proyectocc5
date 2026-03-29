@@ -31,7 +31,7 @@ $tipos = [
     'G' => 'GASTO'
 ];
 
-// Agrupar por tipo
+//agrupar por tipo
 $datos = [];
 while ($row = mysqli_fetch_assoc($result)) {
     $datos[$row["Tipo"]][] = $row;

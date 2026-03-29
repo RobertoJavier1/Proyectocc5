@@ -9,13 +9,15 @@
     <div class="contenedor">
         <h1>Insertar Partida Contable</h1>
 <?php
-$NumPartida  = intval($_POST["NumPartida"]);
-$Fecha       = $_POST["Fecha"];
+$NumPartida = intval($_POST["NumPartida"]);
+$Fecha = $_POST["Fecha"];
 $Descripcion = $_POST["Descripcion"];
-$CuentaDebe  = intval($_POST["CuentaDebe"]);
-$ValorDebe   = floatval($_POST["ValorDebe"]);
+$CuentaDebe = intval($_POST["CuentaDebe"]);
 $CuentaHaber = intval($_POST["CuentaHaber"]);
-$ValorHaber  = floatval($_POST["ValorHaber"]);
+$rawDebe = $_POST["ValorDebe"];
+$rawHaber = $_POST["ValorHaber"];
+$ValorDebe = floatval($rawDebe);
+$ValorHaber = floatval($rawHaber);
 
 $enlaces_error = '<a class="volver" href="javascript:history.back()">Regresar</a>'
     . ' &nbsp;|&nbsp; '
@@ -49,6 +51,12 @@ if ($CuentaDebe === $CuentaHaber) {
 
 if ($ValorDebe != $ValorHaber) {
     echo '<p style="color:red; font-weight:bold;">Error: el valor del Debe y el Haber deben ser iguales para que la partida cuadre.</p>';
+    echo $enlaces_error;
+    exit;
+}
+
+if (!is_numeric($rawDebe) || !is_numeric($rawHaber)) {
+    echo '<p style="color:red; font-weight:bold;">Error: el valor debe ser un numero valido. Use punto para decimales (ej: 1500.00), no se aceptan comas.</p>';
     echo $enlaces_error;
     exit;
 }

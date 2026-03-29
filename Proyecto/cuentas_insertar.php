@@ -9,7 +9,7 @@
     <div class="contenedor">
         <h1>Insertar Cuenta Contable</h1>
 <?php
-// intval para convertir a entero
+
 $NumCuenta = intval($_POST["NumCuenta"]);
 $NombreCuenta = $_POST["NombreCuenta"];
 $Tipo = $_POST["Tipo"];
@@ -30,6 +30,7 @@ if (trim($NombreCuenta) === '') {
     exit;
 }
 
+//desactivar los reportes automaticos de MYSQL
 mysqli_report(MYSQLI_REPORT_OFF);
 
 $link = mysqli_connect('localhost', 'root', '', 'CONTABILIDAD')

@@ -13,15 +13,23 @@ $NumPartida  = intval($_POST["NumPartida"]);
 $Fecha       = $_POST["Fecha"];
 $Descripcion = $_POST["Descripcion"];
 $CuentaDebe  = intval($_POST["CuentaDebe"]);
-$ValorDebe   = floatval($_POST["ValorDebe"]);
 $CuentaHaber = intval($_POST["CuentaHaber"]);
-$ValorHaber  = floatval($_POST["ValorHaber"]);
+$rawDebe     = $_POST["ValorDebe"];
+$rawHaber    = $_POST["ValorHaber"];
+$ValorDebe   = floatval($rawDebe);
+$ValorHaber  = floatval($rawHaber);
 
 $enlaces_error = '<a class="volver" href="javascript:history.back()">Regresar</a>'
     . ' &nbsp;|&nbsp; '
     . '<a class="volver" href="partidas_vista.php">Ver listado</a>'
     . ' &nbsp;|&nbsp; '
     . '<a class="volver" href="index.html">Volver al menu</a>';
+
+if (!is_numeric($rawDebe) || !is_numeric($rawHaber)) {
+    echo '<p style="color:red; font-weight:bold;">Error: el valor debe ser un numero valido. Use punto para decimales (ej: 1500.00), no se aceptan comas.</p>';
+    echo $enlaces_error;
+    exit;
+}
 
 if (trim($Fecha) === '') {
     echo '<p style="color:red; font-weight:bold;">Error: la fecha no puede estar vacia.</p>';
@@ -67,7 +75,7 @@ if (!$result) {
     exit;
 }
 
-// Reemplazar registros: borrar los actuales e insertar los nuevos
+//reemplazar registros, borrar los actuales e insertar los nuevos
 mysqli_query($link, "DELETE FROM RegistrosContables WHERE NumPartida = $NumPartida");
 
 $result = mysqli_query($link, "INSERT INTO RegistrosContables VALUES ($NumPartida, $CuentaDebe, 'D', $ValorDebe)");
