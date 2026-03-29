@@ -27,7 +27,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     $fecha = $row["Fecha"];
     $desc = $row["Descripcion"];
     echo "  <tr>\n";
-    echo "    <td>$num</td><td>$fecha</td><td>$desc</td>\n";
+    echo "    <td>$num</td><td>$fecha</td><td>" . htmlspecialchars($desc) . "</td>\n";
     echo "    <td class='accion'>";
     echo "<a href='partidas_actualizar_nuevo.php?NumPartida=$num'>Editar</a>";
     echo "<a class='eliminar' href='partidas_eliminar.php?NumPartida=$num'>Eliminar</a>";

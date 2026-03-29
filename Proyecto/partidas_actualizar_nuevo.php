@@ -9,13 +9,13 @@
     <div class="contenedor">
         <h1>Modificar Partida Contable</h1>
 <?php
-$numeroPartida = intval($_GET["numeroPartida"]);
+$numeroPartida = intval($_GET["NumPartida"]);
 
 $link = mysqli_connect('localhost', 'root', '', 'CONTABILIDAD')
     or die('No se pudo conectar: ' . mysqli_connect_error());
 
 //cargar datos de la partida
-$res = mysqli_query($link, "SELECT Fecha, Descripcion FROM PartidasContables WHERE numeroPartida = $numeroPartida");
+$res = mysqli_query($link, "SELECT Fecha, Descripcion FROM PartidasContables WHERE NumPartida = $numeroPartida");
 $partida = mysqli_fetch_assoc($res);
 
 if (!$partida) {
@@ -26,7 +26,7 @@ if (!$partida) {
 }
 
 //cargar registros Debe y Haber de esta partida
-$res = mysqli_query($link, "SELECT NumCuenta, DebeHaber, Valor FROM RegistrosContables WHERE numeroPartida = $numeroPartida");
+$res = mysqli_query($link, "SELECT NumCuenta, DebeHaber, Valor FROM RegistrosContables WHERE NumPartida = $numeroPartida");
 $registros = [];
 while ($row = mysqli_fetch_assoc($res)) {
     $registros[$row['DebeHaber']] = $row;
@@ -44,7 +44,7 @@ $cuentas = mysqli_fetch_all($res, MYSQLI_ASSOC);
 mysqli_close($link);
 ?>
         <form action="partidas_actualizar.php" method="post">
-            <input type="hidden" name="numeroPartida" value="<?php echo $numeroPartida; ?>">
+            <input type="hidden" name="NumPartida" value="<?php echo $numeroPartida; ?>">
 
             <label>Numero de Partida:</label>
             <p><?php echo $numeroPartida; ?></p>

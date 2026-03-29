@@ -11,14 +11,14 @@
 <?php
 
 //obtener el numero de cuenta desde la url
-$NumeroCuenta = intval($_GET["NumCuenta"]);
+$numeroCuenta = intval($_GET["NumCuenta"]);
 
 //conectar a la base de datos
 $link = mysqli_connect('localhost', 'root', '', 'CONTABILIDAD')
     or die('No se pudo conectar: ' . mysqli_connect_error());
 
 //contar cuantos registros contables usan esta cuenta
-$result = mysqli_query($link, "SELECT COUNT(*) FROM RegistrosContables WHERE NumCuenta = $NumeroCuenta");
+$result = mysqli_query($link, "SELECT COUNT(*) FROM RegistrosContables WHERE NumCuenta = $numeroCuenta");
 $row = mysqli_fetch_row($result);
 $total = $row[0];
 
@@ -26,7 +26,7 @@ $total = $row[0];
 if ($total > 0) {
     echo '<p style="color:red; font-weight:bold;">Error: no se puede eliminar la cuenta porque tiene registros contables asociados.</p>';
 } else {
-    mysqli_query($link, "DELETE FROM CuentasContables WHERE NumCuenta = $NumeroCuenta");
+    mysqli_query($link, "DELETE FROM CuentasContables WHERE NumCuenta = $numeroCuenta");
     echo '<p class="mensaje">La cuenta fue eliminada exitosamente.</p>';
 }
 

@@ -10,12 +10,12 @@
         <h1>Insertar Cuenta Contable</h1>
 <?php
 //obtener y convertir los datos del formulario
-$NumeroCuenta = intval($_POST["NumCuenta"]);
-$NombreCuenta = $_POST["NombreCuenta"];
-$Tipo = $_POST["Tipo"];
+$numeroCuenta = intval($_POST["NumCuenta"]);
+$nombreCuenta = $_POST["NombreCuenta"];
+$tipo = $_POST["Tipo"];
 
 //validar que el numero de cuenta sea un entero positivo
-if ($NumeroCuenta <= 0) {
+if ($numeroCuenta <= 0) {
     echo '<p style="color:red; font-weight:bold;">Error: el numero de cuenta debe ser un entero positivo.</p>';
     echo '<a class="volver" href="javascript:history.back()">Regresar</a>';
     echo ' &nbsp;|&nbsp; ';
@@ -24,7 +24,7 @@ if ($NumeroCuenta <= 0) {
 }
 
 //validar que el nombre de cuenta no este vacio
-if (trim($NombreCuenta) === '') {
+if (trim($nombreCuenta) === '') {
     echo '<p style="color:red; font-weight:bold;">Error: el nombre de cuenta no puede estar vacio.</p>';
     echo '<a class="volver" href="javascript:history.back()">Regresar</a>';
     echo ' &nbsp;|&nbsp; ';
@@ -40,7 +40,7 @@ $link = mysqli_connect('localhost', 'root', '', 'CONTABILIDAD')
     or die('No se pudo conectar: ' . mysqli_connect_error());
 
 //insertar la nueva cuenta
-$query = "INSERT INTO CuentasContables VALUES ($NumeroCuenta, '$NombreCuenta', '$Tipo')";
+$query = "INSERT INTO CuentasContables VALUES ($numeroCuenta, '$nombreCuenta', '$tipo')";
 
 $result = mysqli_query($link, $query);
 
@@ -54,7 +54,7 @@ if ($result) {
     echo '<a class="volver" href="index.html">Volver al menu</a>';
 //error 1062 significa que ya existe una cuenta con ese numero
 } else if (mysqli_errno($link) == 1062) {
-    echo '<p style="color:red; font-weight:bold;">Error: ya existe una cuenta con el numero ' . $NumeroCuenta . '.</p>';
+    echo '<p style="color:red; font-weight:bold;">Error: ya existe una cuenta con el numero ' . $numeroCuenta . '.</p>';
     echo '<a class="volver" href="javascript:history.back()">Regresar</a>';
     echo ' &nbsp;|&nbsp; ';
     echo '<a class="volver" href="cuentas_vista.php">Ver listado</a>';

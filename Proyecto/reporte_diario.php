@@ -15,11 +15,15 @@ $link = mysqli_connect('localhost', 'root', '', 'CONTABILIDAD')
 
 //determinar si busca por partida o por fecha
 if (isset($_GET["NumPartida"]) && $_GET["NumPartida"] != '') {
-    $NumPartida = intval($_GET["NumPartida"]);
-    $query = "SELECT * FROM PartidasContables WHERE NumPartida=$NumPartida";
+    $numPartida = intval($_GET["NumPartida"]);
+    $query = "SELECT * FROM PartidasContables WHERE NumPartida=$numPartida";
+} elseif (isset($_GET["Fecha"]) && $_GET["Fecha"] != '') {
+    $fecha = $_GET["Fecha"];
+    $query = "SELECT * FROM PartidasContables WHERE Fecha='$fecha'";
 } else {
-    $Fecha = $_GET["Fecha"];
-    $query = "SELECT * FROM PartidasContables WHERE Fecha='$Fecha'";
+    echo '<p style="color:red; font-weight:bold;">Error: debe ingresar un numero de partida o una fecha.</p>';
+    mysqli_close($link);
+    exit;
 }
 
 $result = mysqli_query($link, $query) or die('Error: ' . mysqli_error($link));
@@ -32,7 +36,7 @@ while ($partida = mysqli_fetch_assoc($result)) {
     echo "<p><b>EMPRESA BOB INDUSTRIES</b></p>\n";
     echo "<p><b>NUMERO DE PARTIDA:</b> $np</p>\n";
     echo "<p><b>FECHA:</b> $fecha</p>\n";
-    echo "<p><b>DESCRIPCION:</b> $desc</p>\n";
+    echo "<p><b>DESCRIPCION:</b> " . htmlspecialchars($desc) . "</p>\n";
 
     //registros de esta partida
     $query2 = "SELECT r.DebeHaber, r.Valor, c.NombreCuenta
@@ -64,7 +68,7 @@ while ($partida = mysqli_fetch_assoc($result)) {
         }
 
         echo "<tr>\n";
-        echo "<td>$nombre</td>\n";
+        echo "<td>" . htmlspecialchars($nombre) . "</td>\n";
         echo "<td style='text-align:right; white-space:nowrap'>$debe</td>\n";
         echo "<td style='text-align:right; white-space:nowrap'>$haber</td>\n";
         echo "</tr>\n";

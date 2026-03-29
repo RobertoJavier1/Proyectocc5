@@ -11,16 +11,28 @@
 
 <?php
 //obtener el numero de cuenta desde la url
-$NumCuenta = intval($_GET["NumCuenta"]);
+$numCuenta = isset($_GET["NumCuenta"]) ? intval($_GET["NumCuenta"]) : 0;
 
 //conectar a la base de datos
 $link = mysqli_connect('localhost', 'root', '', 'CONTABILIDAD')
     or die('No se pudo conectar: ' . mysqli_connect_error());
 
+if ($numCuenta <= 0) {
+    echo '<p style="color:red; font-weight:bold;">Error: debe seleccionar una cuenta valida.</p>';
+    mysqli_close($link);
+    exit;
+}
+
 //obtener nombre de la cuenta
-$query = "SELECT NombreCuenta FROM CuentasContables WHERE NumCuenta=$NumCuenta";
+$query = "SELECT NombreCuenta FROM CuentasContables WHERE NumCuenta=$numCuenta";
 $result = mysqli_query($link, $query) or die('Error: ' . mysqli_error($link));
 $cuenta = mysqli_fetch_assoc($result);
+
+if (!$cuenta) {
+    echo '<p style="color:red; font-weight:bold;">Error: la cuenta seleccionada no existe.</p>';
+    mysqli_close($link);
+    exit;
+}
 
 echo "<p><b>EMPRESA BOB INDUSTRIES</b></p>\n";
 echo "<p><b>CUENTA:</b> {$cuenta['NombreCuenta']}</p><br>\n";
@@ -29,7 +41,7 @@ echo "<p><b>CUENTA:</b> {$cuenta['NombreCuenta']}</p><br>\n";
 $query = "SELECT r.NumPartida, p.Fecha, p.Descripcion, r.DebeHaber, r.Valor
           FROM RegistrosContables r
           JOIN PartidasContables p ON r.NumPartida = p.NumPartida
-          WHERE r.NumCuenta=$NumCuenta
+          WHERE r.NumCuenta=$numCuenta
           ORDER BY p.Fecha, r.NumPartida";
 $result = mysqli_query($link, $query) or die('Error: ' . mysqli_error($link));
 
@@ -57,7 +69,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     }
 
     echo "<tr>\n";
-    echo "<td>#$np</td><td style='white-space:nowrap'>$fecha</td><td>$desc</td>\n";
+    echo "<td>#$np</td><td style='white-space:nowrap'>$fecha</td><td>" . htmlspecialchars($desc) . "</td>\n";
     echo "<td style='text-align:right; white-space:nowrap'>$debe</td>\n";
     echo "<td style='text-align:right; white-space:nowrap'>$haber</td>\n";
     echo "</tr>\n";

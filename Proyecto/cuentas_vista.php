@@ -38,7 +38,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     //traduccion para devolever el nombre del tipo no la letra
     $tipoPalabra = $tipos[$tipo];
     echo "<tr>\n";
-    echo "<td>$num</td><td>$nombre</td><td>$tipoPalabra</td>\n";
+    echo "<td>$num</td><td>" . htmlspecialchars($nombre) . "</td><td>$tipoPalabra</td>\n";
     echo "<td class='accion'>";
     //urlencode convierte el nombre a formato URL espacios y simbolos para que el link no se rompa
     echo "<a href='cuentas_actualizar_nuevo.php?NumCuenta=$num&NombreCuenta=" . urlencode($nombre) . "&Tipo=$tipo'>Editar</a>";
