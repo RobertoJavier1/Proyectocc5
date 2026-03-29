@@ -10,9 +10,9 @@
         <h1>Modificar Cuenta Contable</h1>
 <?php
 
-$NumCuenta = intval($_GET["NumCuenta"]);
-$NombreCuenta = $_GET["NombreCuenta"];
-$Tipo = $_GET["Tipo"];
+$numeroCuenta = intval($_GET["NumCuenta"]);
+$nombreCuenta = $_GET["NombreCuenta"];
+$tipo = $_GET["Tipo"];
 $tipos = [
     'A' => 'Activo',
     'P' => 'Pasivo',
@@ -24,19 +24,19 @@ $tipos = [
 ?>
         <form action="cuentas_actualizar.php" method="post">
             <label>Numero de Cuenta:</label>
-            <p><?php echo $NumCuenta; ?></p>
-            <input type="hidden" name="NumCuenta" value="<?php echo $NumCuenta; ?>">
+            <p><?php echo $numeroCuenta; ?></p>
+            <input type="hidden" name="numeroCuenta" value="<?php echo $numeroCuenta; ?>">
 
-            <label for="NombreCuenta">Nombre de Cuenta:</label>
-            <input type="text" id="NombreCuenta" name="NombreCuenta" maxlength="50" value="<?php echo $NombreCuenta; ?>">
+            <label for="nombreCuenta">Nombre de Cuenta:</label>
+            <input type="text" id="nombreCuenta" name="nombreCuenta" maxlength="50" value="<?php echo $nombreCuenta; ?>">
 
 
-            <label for="Tipo">Tipo:</label>
-            <select id="Tipo" name="Tipo">
+            <label for="tipo">tipo:</label>
+            <select id="tipo" name="tipo">
              <!-- recorre el arreglo de tipos para generar cada opcion del select
              $val = codigo (A,P,C,I,G), $label = nombre (Activo,Pasivo,etc) -->
                 <?php foreach ($tipos as $val => $label): ?>
-                <option value="<?php echo $val; ?>" <?php echo ($Tipo == $val) ? 'selected' : ''; ?>>
+                <option value="<?php echo $val; ?>" <?php echo ($tipo == $val) ? 'selected' : ''; ?>>
                     <?php echo $label; ?>
                 </option>
                 <?php endforeach; ?>

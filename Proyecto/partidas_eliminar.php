@@ -9,14 +9,18 @@
     <div class="contenedor">
         <h1>Eliminar Partida Contable</h1>
 <?php
+//obtener el numero de partida desde la url
 $NumPartida = intval($_GET["NumPartida"]);
 
+//conectar a la base de datos
 $link = mysqli_connect('localhost', 'root', '', 'CONTABILIDAD')
     or die('No se pudo conectar: ' . mysqli_connect_error());
 
+//eliminar primero los registros para no violar la llave foranea
 mysqli_query($link, "DELETE FROM RegistrosContables WHERE NumPartida=$NumPartida")
     or die('Hubo un error al eliminar los registros: ' . mysqli_error($link));
 
+//luego eliminar la partida
 mysqli_query($link, "DELETE FROM PartidasContables WHERE NumPartida=$NumPartida")
     or die('Hubo un error al eliminar la partida: ' . mysqli_error($link));
 

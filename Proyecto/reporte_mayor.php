@@ -10,8 +10,10 @@
         <h1>Libro Mayor</h1>
 
 <?php
+//obtener el numero de cuenta desde la url
 $NumCuenta = intval($_GET["NumCuenta"]);
 
+//conectar a la base de datos
 $link = mysqli_connect('localhost', 'root', '', 'CONTABILIDAD')
     or die('No se pudo conectar: ' . mysqli_connect_error());
 
@@ -61,6 +63,8 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo "</tr>\n";
 }
 
+//calcular el saldo como la diferencia absoluta entre debe y haber
+//se muestra en la columna debe si debe es mayor, en haber si haber es mayor
 $saldo = abs($totalDebe - $totalHaber);
 $saldoDebe  = ($totalDebe >= $totalHaber) ? 'Q. ' . number_format($saldo, 2, '.', ',') : '';
 $saldoHaber = ($totalHaber > $totalDebe)  ? 'Q. ' . number_format($saldo, 2, '.', ',') : '';

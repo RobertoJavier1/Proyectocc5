@@ -9,14 +9,17 @@
     <div class="contenedor">
         <h1>Modificar Cuenta Contable</h1>
 <?php
-$NumCuenta = intval($_POST["NumCuenta"]);
-$NombreCuenta = $_POST["NombreCuenta"];
-$Tipo = $_POST["Tipo"];
+//obtener los datos del formulario
+$numeroCuenta = intval($_POST["numeroCuenta"]);
+$nombreCuenta = $_POST["nombreCuenta"];
+$tipo = $_POST["tipo"];
 
+//conectar a la base de datos
 $link = mysqli_connect('localhost', 'root', '', 'CONTABILIDAD')
     or die('No se pudo conectar: ' . mysqli_connect_error());
 
-$query = "UPDATE CuentasContables SET NombreCuenta='$NombreCuenta', Tipo='$Tipo' WHERE NumCuenta=$NumCuenta";
+//actualizar el nombre y tipo de la cuenta
+$query = "UPDATE CuentasContables SET NombreCuenta='$nombreCuenta', Tipo='$tipo' WHERE NumCuenta=$numeroCuenta";
 
 $result = mysqli_query($link, $query) or die('Hubo un error: ' . mysqli_error($link));
 echo '<p class="mensaje">La cuenta fue modificada exitosamente.</p>';

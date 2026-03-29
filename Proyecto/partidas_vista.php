@@ -9,9 +9,11 @@
     <div class="contenedor">
         <h1>Listado de Partidas Contables</h1>
 <?php
+//conectar a la base de datos
 $link = mysqli_connect('localhost', 'root', '', 'CONTABILIDAD')
     or die('No se pudo conectar: ' . mysqli_connect_error());
 
+//obtener todas las partidas ordenadas por numero
 $query = "SELECT * FROM PartidasContables ORDER BY NumPartida";
 
 $result = mysqli_query($link, $query) or die('Error: ' . mysqli_error($link));
@@ -19,6 +21,7 @@ $result = mysqli_query($link, $query) or die('Error: ' . mysqli_error($link));
 echo "<table>\n";
 echo " <tr><th>Num</th><th>Fecha</th><th>Descripcion</th><th>Acciones</th></tr>\n";
 
+//recorrer cada partida y generar una fila en la tabla
 while ($row = mysqli_fetch_assoc($result)) {
     $num = $row["NumPartida"];
     $fecha = $row["Fecha"];

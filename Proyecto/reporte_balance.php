@@ -10,9 +10,11 @@
         <h1>Balance de Saldos</h1>
 
 <?php
+//conectar a la base de datos
 $link = mysqli_connect('localhost', 'root', '', 'CONTABILIDAD')
     or die('No se pudo conectar: ' . mysqli_connect_error());
 
+//obtener totales de debe y haber por cuenta con left join para incluir cuentas sin registros
 $query = "SELECT c.NumCuenta, c.NombreCuenta, c.Tipo,
           sum(if(r.DebeHaber='D', r.Valor, 0)) as Debe,
           sum(if(r.DebeHaber='H', r.Valor, 0)) as Haber
@@ -44,7 +46,9 @@ echo "<p><b>EMPRESA BOB INDUSTRIES</b></p>\n";
 echo "<table>\n";
 echo "<tr><th>Cuenta</th><th style='text-align:right'>Debe</th><th style='text-align:right'>Haber</th></tr>\n";
 
+//recorrer los tipos en orden e imprimir cada seccion
 foreach ($tipos as $tipo => $nombreTipo) {
+    //si no hay cuentas de este tipo se omite la seccion
     if (!isset($datos[$tipo])) continue;
 
     echo "<tr><td colspan='3' style='font-weight:bold; padding-top:10px'>$nombreTipo</td></tr>\n";
